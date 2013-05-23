@@ -1,4 +1,19 @@
+/*
 
+TABGuard v1.0
+
+jQuery UI Tabbing plugin.
+http://spirytoos.blogspot.com
+
+Copyright (c) 2013 Tomasz Egiert
+
+https://github.com/spirytoos/TABGuard/blob/master/LICENSE.md
+
+Project site: http://tomaszegiert.seowebsolutions.com.au/tabguard/index.htm
+Github site: https://github.com/spirytoos
+
+ */
+ 
 	(function($)
 	{	
 		$.fn.tabGuard = function(options)
