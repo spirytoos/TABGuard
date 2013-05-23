@@ -15,12 +15,12 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://raw.github.com/spirytoos/MaskIt/master/LICENSE.md"
+            "url": "https://raw.github.com/spirytoos/tabguard/master/LICENSE.md"
         }
     ],
     "homepage": "http://spirytoos.blogspot.com.au/p/blog-page.html",
     "docs": "http://tomaszegiert.seowebsolutions.com.au/tabguard/index.html",
-    "download": "http://tomaszegiert.seowebsolutions.com.au/tabguard/index.html",
+    "download": "http://tomaszegiert.seowebsolutions.com.au/tabguard/index.htm",
     "dependencies": {
         "jquery": ">=1.9.1"
     }
