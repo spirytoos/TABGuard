@@ -1,5 +1,5 @@
 Copyright 2013 Tomasz Egiert
-http://spirytoos.blogspot.com
+http://spirytoos.blogspot.com.au/
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
