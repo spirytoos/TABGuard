@@ -3,7 +3,7 @@
 TABGuard v1.0
 
 jQuery UI Tabbing plugin.
-http://spirytoos.blogspot.com
+http://spirytoos.blogspot.com.au/
 
 Copyright (c) 2013 Tomasz Egiert
 
