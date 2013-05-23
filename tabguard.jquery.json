@@ -1,0 +1,27 @@
+{
+    "name": "tabguard",
+    "title": "jQuery TABGuard",
+    "description": "jQuery plugin for limiting number of elements that will take focus on pressing TAB.",
+    "keywords": [
+        "mask",
+        "input",
+        "validate"
+    ],
+    "version": "1.0.0",
+    "author": {
+        "name": "Tomasz Egiert",
+        "url": "http://spirytoos.blogspot.com"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/spirytoos/MaskIt/master/LICENSE.md"
+        }
+    ],
+    "homepage": "http://spirytoos.blogspot.com.au/p/blog-page.html",
+    "docs": "http://tomaszegiert.seowebsolutions.com.au/tabguard/index.html",
+    "download": "http://tomaszegiert.seowebsolutions.com.au/tabguard/index.html",
+    "dependencies": {
+        "jquery": ">=1.9.1"
+    }
+}
