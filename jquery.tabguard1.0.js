@@ -26,22 +26,23 @@ Github site: https://github.com/spirytoos
 
 				var isFirstInFocus=false;
 				var isLastInFocus=false;
+				var $this = $(this);
 
-				$(this).keyup(function(e) {
+				$this.keyup(function(e) {
 
 					// make sure these are only working when dialog is actually open
 
-					if($(this).find(":focus"))
+					if($this.find(":focus"))
 					{
 						if (e.keyCode == 9)
 						{
 							// now one of the fields is in focus so in here we simply set flags for later use
 
-							if($(this).find(':tabbable:first:focus').length)
+							if($this.find(':tabbable:first:focus').length)
 							{
 								isFirstInFocus=true;
 							}
-							else if($(this).find(':tabbable:last:focus').length)
+							else if($this.find(':tabbable:last:focus').length)
 							{
 								isLastInFocus=true;
 							}
@@ -51,17 +52,17 @@ Github site: https://github.com/spirytoos
 					}
 				})
 
-				$(this).keydown(function(e) {
+				$this.keydown(function(e) {
 
 					// make sure these are only working when dialog is actually open
 
-					if($(this).find(":focus"))
+					if($this.find(":focus"))
 					{
 						// now check tab and tab+shift
 
 						if (e.keyCode == 9)
 						{
-							var tabbables = $(this).find(':tabbable'),
+							var tabbables = $this.find(':tabbable'),
 								first = tabbables.filter(':first'),
 								last  = tabbables.filter(':last');
 
