@@ -32,7 +32,7 @@ Github site: https://github.com/spirytoos
 
 					// make sure these are only working when dialog is actually open
 
-					if($this.find(":focus"))
+					if($this.find(":focus").length > 0)
 					{
 						if (e.keyCode == 9)
 						{
@@ -55,7 +55,7 @@ Github site: https://github.com/spirytoos
 
 					// make sure these are only working when dialog is actually open
 
-					if($this.find(":focus"))
+					if($this.find(":focus").length > 0)
 					{
 						// now check tab and tab+shift
 
