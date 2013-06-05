@@ -16,7 +16,13 @@ Github site: https://github.com/spirytoos
 
 	(function($)
 	{
-		$.fn.tabGuard = function(options)
+		var defaults = {
+			deactivate: false
+		};
+
+		var pluginName = 'tabGuard';
+
+		$.fn[pluginName] = function(options)
 		{
 			return this.each(function()
 			{
@@ -27,9 +33,15 @@ Github site: https://github.com/spirytoos
 				var isFirstInFocus=false;
 				var isLastInFocus=false;
 				var $this = $(this);
+				var options = $.extend( {}, defaults, options );
 
-				$this.keyup(function(e) {
+				if (options.deactivate) {
+					// Remove the events added by this plugin
+					$this.off('.' + pluginName);
+					return;
+				}
 
+				$this.on('keyup.' + pluginName, function(e) {
 					// make sure these are only working when dialog is actually open
 
 					if($this.find(":focus").length > 0)
@@ -51,7 +63,7 @@ Github site: https://github.com/spirytoos
 					}
 				});
 
-				$this.keydown(function(e) {
+				$this.on('keydown.' + pluginName, function(e) {
 
 					// make sure these are only working when dialog is actually open
 
