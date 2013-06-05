@@ -69,7 +69,7 @@ Github site: https://github.com/spirytoos
 							{
 								if(isFirstInFocus)
 								{
-									last.focus(1);
+									last.focus();
 									isFirstInFocus=false;
 									isLastInFocus=true;
 									return false;
@@ -90,7 +90,7 @@ Github site: https://github.com/spirytoos
 							{
 								if(isLastInFocus)
 								{
-									first.focus(1);
+									first.focus();
 									isFirstInFocus=true;
 									isLastInFocus=false;
 									return false;
