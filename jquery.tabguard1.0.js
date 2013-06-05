@@ -47,7 +47,6 @@ Github site: https://github.com/spirytoos
 								isLastInFocus=true;
 							}
 
-							console.log(isFirstInFocus+ " .... " +isLastInFocus);
 						}
 					}
 				});
