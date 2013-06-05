@@ -50,7 +50,7 @@ Github site: https://github.com/spirytoos
 							console.log(isFirstInFocus+ " .... " +isLastInFocus);
 						}
 					}
-				})
+				});
 
 				$this.keydown(function(e) {
 
