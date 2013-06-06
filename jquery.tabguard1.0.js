@@ -26,12 +26,7 @@ Github site: https://github.com/spirytoos
 		{
 			return this.each(function()
 			{
-				/* these are flags used to track which field in specified container is in focus. We need to make sure that pressing TAB or SHIFT+TAB dosent focus on fieds outside of container so we need to check on keydown (NOT UP YET!) if the tab or shift+tab is ressed. If so then check if the field currently being in focus is the first or last in container. If so then we need to move the focus to first or last field in a form accordingly. This has to be done in keydown as otherwise browsers will focus url field or development panel or anything else in its chrome. Now, this is done in keydown, however we need keyup as in keydown the field being currently in focus (the one we navigating away from) is returned. We need to hook event in keyup now to put focus on to the field we want to navigate to. See the code for all logic but thats in a nutshell working of tabbing in between fields. */
 
-				// flags used to track focus on first and last fields
-
-				var isFirstInFocus=false;
-				var isLastInFocus=false;
 				var $this = $(this);
 				var options = $.extend( {}, defaults, options );
 
@@ -41,88 +36,65 @@ Github site: https://github.com/spirytoos
 					return;
 				}
 
-				$this.on('keyup.' + pluginName, function(e) {
-					// make sure these are only working when dialog is actually open
-
-					if($this.find(":focus").length > 0)
-					{
-						if (e.keyCode == 9)
-						{
-							// now one of the fields is in focus so in here we simply set flags for later use
-
-							if($this.find(':tabbable:first:focus').length)
-							{
-								isFirstInFocus=true;
-							}
-							else if($this.find(':tabbable:last:focus').length)
-							{
-								isLastInFocus=true;
-							}
-
-						}
-					}
-				});
-
 				$this.on('keydown.' + pluginName, function(e) {
 
-					// make sure these are only working when dialog is actually open
-
-					if($this.find(":focus").length > 0)
+					// Make sure we're tabbing and hat our focused element is still focused
+					if (e.keyCode === 9)
 					{
-						// now check tab and tab+shift
+						var tabbables = $this.find(':tabbable'),
+							first = tabbables.filter(':first'),
+							last  = tabbables.filter(':last'),
+							focusedElement = $(e.target),
 
-						if (e.keyCode == 9)
+							isFirstInFocus = (first.get(0) === focusedElement.get(0)),
+							isLastInFocus = (last.get(0) === focusedElement.get(0));
+
+						// Check tab+shift
+						var tabbingForward = !e.shiftKey;
+
+						// Special case: radio buttons
+						// input[type=radio] are always, according to jQuery ui, :tabbable.
+						// If you've selected a radio input and press tab,
+						// you will be tabbed to the next input and *not* to the next radio button
+						//
+						// Here we check if the active element is a radio and if the first/last is
+						if (!isFirstInFocus && !isLastInFocus && focusedElement.is(':radio'))
 						{
-							var tabbables = $this.find(':tabbable'),
-								first = tabbables.filter(':first'),
-								last  = tabbables.filter(':last');
-
-							if(e.shiftKey)
+							var radioGroupName = focusedElement.attr('name');
+							// If the focused element is a radio button
+							if (tabbingForward)
 							{
-								if(isFirstInFocus)
+								if (last.is(':radio') && last.attr('name') === radioGroupName)
 								{
-									last.focus();
-									isFirstInFocus=false;
-									isLastInFocus=true;
-									return false;
+									// the last one belongs to the same radio group as the focused one
+									isLastInFocus = true;
 								}
-								else if (e.target === first[0])
+							} else
+							{
+								if (first.is(':radio') && first.attr('name') === radioGroupName)
 								{
-									isFirstInFocus=true;
-									isLastInFocus=false;
-									return false;
-								}
-								else
-								{
-									isFirstInFocus=false;
-									isLastInFocus=false;
+									// the first one belongs to the same radio group as the focused one
+									isFirstInFocus = true;
 								}
 							}
-							else
-							{
-								if(isLastInFocus)
-								{
-									first.focus();
-									isFirstInFocus=true;
-									isLastInFocus=false;
-									return false;
-								}
-								else if (e.target === last[0])
-								{
-									isLastInFocus=true;
-									isFirstInFocus=false;
-									return false;
-								}
-								else
-								{
-									isFirstInFocus=false;
-									isLastInFocus=false;
-								}
-
-							}
-
 						}
 
+						if(tabbingForward)
+						{
+							if(isLastInFocus)
+							{
+								first.focus();
+								e.preventDefault();
+							}
+						}
+						else
+						{
+							if(isFirstInFocus)
+							{
+								last.focus();
+								e.preventDefault();
+							}
+						}
 					}
 				});
 			});
