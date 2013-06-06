@@ -5,8 +5,8 @@
 		<script type="text/javascript" src="jquery-ui-1.10.3.custom.min.js"></script>
 		<script src="jquery.tabguard1.0.js"></script>
 		<style>
-		
-			body 
+
+			body
 			{
 				padding: 10px;
 				background-color: #fff;
@@ -15,26 +15,26 @@
 				font-size: 12px;
 				width: 500px;
 			}
-			
+
 			div
 			{
 				overflow: auto;
 				padding: 0px 0 15px;
 			}
-			
+
 			label
 			{
 				display: block;
 			}
-			
+
 			p code
 			{
 				margin: 0;
 				padding: 16px 0;
 				color: rgb(28, 141, 69);
 			}
-			
-			
+
+
 			div code
 			{
 				float: left;
@@ -42,7 +42,7 @@
 				padding: 16px 0;
 				color: rgb(28, 141, 69);
 			}
-			
+
 			input
 			{
 				font-size: 12px;
@@ -55,7 +55,7 @@
 				margin-right: 15px;
 				width: 140px;
 			}
-			
+
 			.radios input
 			{
 				clear: left;
@@ -65,12 +65,12 @@
 				margin-right: 5px;
 				background-color: #fff;
 			}
-			
+
 			.radios label
 			{
 				float: left;
 			}
-			
+
 			textarea
 			{
 				font-size: 12px;
@@ -84,58 +84,58 @@
 				height: 50px;
 				font-family: arial;
 			}
-			
-			#cc2 
+
+			#cc2
 			{
 				width: 200px;
 			}
-			
+
 			#sep2,#sep3, #sep4
 			{
 				width: 200px;
 			}
-		
+
 		</style>
 
 		<script>
 
 			$(document).ready(function()
 			{
-				$(".someGroup1,.someGroup2").tabGuard();				
+				$(".someGroup").tabGuard();
 			});
-			
+
 
 		</script>
-		
+
 
 	</head>
 	<body>
 
 	<h1>TABGuard v1.0 - jQuery plugin</h1>
-	
+
 	<p>On each press of TAB browser puts tabbable elements in focus and navigates through all the elements in a page. This becomes a problem in a case when you have a form in a dialog (lightbox etc.) and want TAB key to navigate only over elements in this form. Default browser behaviour will iterate over all the elements in a page, this includes these in a form in a dialog, as well as the ones behind the dialog. Furthermore, when no more tabbable elements are available in the page, URL or other elements in browsers chrome will be focussed on.</p>
 
 	<p>This plugin limits TAB to certain group of elements only. See example with two groups of fields below. Put one of the fields in focus and hit TAB (or shift+TAB) multiple times. Eventually focus will jump from last to first and vice versa, leaving other group of elements without focus.</p>
 
-	
-			
-			<div class="someGroup1">
+
+
+			<div class="someGroup">
 	<h3>1st set of fields :</h3>
 			<label for="name">Name</label><input type="text" id="name"/>
 			<label for="name">Age</label><input type="text" id="age"/>
-			
+
 			<p>Some content here. Some content here. Some content here. Some content here. Some content here. </p>
 			<label for="address">Address</label>
 			<textarea></textarea>
-			
+
 			<div class="radios">
 			<input type="radio" name="aaa" id="r1"><label for="r1" />Label for r1</label><br/><br/>
 			<input type="radio" name="aaa" id="r2"><label for="r2" />Label for r2</label><br/><br/>
 			<input type="checkbox"  id="c1"><label for="c1" />Label for c1</label><br/><br/>
 			<input type="checkbox"  id="c2"><label for="c2" />Label for c2</label><br/><br/>
 			</div>
-			
-			<a href="link1">Link 1</a> | 
+
+			<a href="link1">Link 1</a> |
 			<a href="link1">Link 2</a>
 			<br/>
 			<br/>
@@ -147,30 +147,30 @@
 			<br/>
 			<br/>
 			<input type="submit" value="SUBMIT" />
-			
+
 		</div>
-		
-		
-		
-			
-			<div class="someGroup1">
-		
+
+
+
+
+			<div class="someGroup">
+
 	<h3>2nd set of fields :</h3>
 			<label for="name">Name</label><input type="text" id="name"/>
 			<label for="name">Age</label><input type="text" id="age"/>
-			
+
 			<p>Some content here. Some content here. Some content here. Some content here. Some content here. </p>
 			<label for="address">Address</label>
 			<textarea></textarea>
-			
+
 			<div class="radios">
 			<input type="radio" name="aaa" id="r1"><label for="r1" />Label for r1</label><br/><br/>
 			<input type="radio" name="aaa" id="r2"><label for="r2" />Label for r2</label><br/><br/>
 			<input type="checkbox"  id="c1"><label for="c1" />Label for c1</label><br/><br/>
 			<input type="checkbox"  id="c2"><label for="c2" />Label for c2</label><br/><br/>
 			</div>
-			
-			<a href="link1">Link 1</a> | 
+
+			<a href="link1">Link 1</a> |
 			<a href="link1">Link 2</a>
 			<br/>
 			<br/>
@@ -182,44 +182,65 @@
 			<br/>
 			<br/>
 			<input type="submit" value="SUBMIT" />
-			
+
 		</div>
-		
-		
-		
-		
+
+		<div class="someGroup">
+
+			<h3>3nd set of fields. Edge case, starting&amp;ending with radio buttons</h3>
+
+			<div class="radios">
+				<input type="radio" name="aaa">
+				<input type="radio" name="aaa" selected="selected">
+				<input type="radio" name="aaa">
+			</div>
+			<label for="name">Name</label><input type="text" name="name"/>
+
+			<input type="submit" value="SUBMIT" />
+
+			<div class="radios">
+				<input type="radio" name="bbb" selected="selected">
+				<input type="radio" name="bbb">
+				<input type="radio" name="bbb">
+			</div>
+
+		</div>
+
+
+
+
 	<h2>How to use?</h2>
-	
+
 	<p>Download jQuery UI (only UI Core/core is needed). When you download it should also come with jQuery in it. Grab it from here:
-	
+
 	<p><a href="http://jqueryui.com/download/#!version=1.10.3&components=1000000000000000000000000000000000">jQuery UI</a></p>
-	
+
 	<p>Download plugin js file:</p>
 
 	<p>Full dev. version: <a href="https://github.com/spirytoos/TABGuard/blob/master/jquery.tabguard1.0.js">jquery.tabguard1.0.js (with comments if you dare, ~3kb)</a></p>
 	<p>Or minimised: <a href="https://github.com/spirytoos/TABGuard/blob/master/jquery.tabguard1.0.min.js">jquery.tabguard1.0.min.js (compressed, ~2kb)</a></p>
-	
-	
+
+
 	<p>Include all the files in your webpage. Create HTML with fields and wrap this fields into parent element. Usually its already wrapped in <code>form</code> etc. Once DOM loaded pass parent element into the plugin as below.</p>
-		
+
 	<p><code>
 
-				$(".someGroup1").tabGuard();		
+				$(".someGroup").tabGuard();
 	</code>
 
 	</p>
 	<p>You can group elements with any jQuery selector, use class, id, tagname etc. Above I limit TAB scope for one group with class on it.</p>
 
 	<p>As simple as that. I did not implement any options as didn't need for the project I currently work on, but in future versions might add features.<p>
-	
+
 	<p>See source of this page for very simple example.</p>
-	
-		
+
+
 	<h2>Compatibility</h2>
-	
+
 	<p>I briefly tested on IE7+, latest (as of 23rd May 2013) Chrome and Firefox and see no issues. If you find any problems please let me know via my blog site <a href="http://spirytoos.blogspot.com.au">http://spirytoos.blogspot.com.au</a>.</p>
-	
+
 	<p>Safari on windows gets slightly confused when tabbable elements include anchor links so test throughfully if targetting this browser. This possibly has something to do with jQuery UI implementation of :tabbable nevertheless is something to keep in mind.</p>
-	
-	
+
+
 </body></html>
