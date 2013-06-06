@@ -101,7 +101,7 @@
 
 			$(document).ready(function()
 			{
-				$(".someGroup1,.someGroup2").tabGuard();
+				$(".someGroup").tabGuard();
 			});
 
 
@@ -119,7 +119,7 @@
 
 
 
-			<div class="someGroup1">
+			<div class="someGroup">
 	<h3>1st set of fields :</h3>
 			<label for="name">Name</label><input type="text" id="name"/>
 			<label for="name">Age</label><input type="text" id="age"/>
@@ -153,7 +153,7 @@
 
 
 
-			<div class="someGroup1">
+			<div class="someGroup">
 
 	<h3>2nd set of fields :</h3>
 			<label for="name">Name</label><input type="text" id="name"/>
@@ -185,6 +185,27 @@
 
 		</div>
 
+		<div class="someGroup">
+
+			<h3>3nd set of fields. Edge case, starting&amp;ending with radio buttons</h3>
+
+			<div class="radios">
+				<input type="radio" name="aaa">
+				<input type="radio" name="aaa" selected="selected">
+				<input type="radio" name="aaa">
+			</div>
+			<label for="name">Name</label><input type="text" name="name"/>
+
+			<input type="submit" value="SUBMIT" />
+
+			<div class="radios">
+				<input type="radio" name="bbb" selected="selected">
+				<input type="radio" name="bbb">
+				<input type="radio" name="bbb">
+			</div>
+
+		</div>
+
 
 
 
@@ -204,7 +225,7 @@
 
 	<p><code>
 
-				$(".someGroup1").tabGuard();
+				$(".someGroup").tabGuard();
 	</code>
 
 	</p>
