@@ -24,11 +24,12 @@ Github site: https://github.com/spirytoos
 
 		$.fn[pluginName] = function(options)
 		{
+			var options = $.extend( {}, defaults, options );
+			
 			return this.each(function()
 			{
 
 				var $this = $(this);
-				var options = $.extend( {}, defaults, options );
 
 				if (options.deactivate) {
 					// Remove the events added by this plugin
